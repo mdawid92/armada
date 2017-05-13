@@ -1,4 +1,12 @@
 # Changelog
+## Unreleased
+
+### Features
+- Add `DISTRIB_CODENAME`=xenial and `DISTRIB_RELEASE`=16.04 environmental variables.
+- Install `less`
+
+### Improvements
+- Don't install old `gcc` version in `microservice_python3`.
 
 ## 1.15.1 (2017-05-12)
 
