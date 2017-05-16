@@ -2,6 +2,7 @@ from armada_backend import api_base, docker_client
 from armada_backend.utils import shorten_container_id, get_ship_name
 from armada_command.consul import kv
 from armada_command.consul.consul import consul_query
+from armada_backend.hooks import run_hook
 
 
 class Start(api_base.ApiCommand):
@@ -21,6 +22,9 @@ class Start(api_base.ApiCommand):
 
         for container_port, host_address in docker_inspect['NetworkSettings']['Ports'].items():
             service_endpoints['{0}:{1}'.format(service_ip, host_address[0]['HostPort'])] = container_port
+
+        run_hook(container_id, 'post-run', 10)
+
         return service_endpoints
 
     def POST(self):

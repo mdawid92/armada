@@ -4,6 +4,7 @@ from armada_backend import api_base, docker_client
 from armada_backend.utils import deregister_services, is_container_running, get_logger, run_command_in_container
 from armada_backend.utils import get_ship_name
 from armada_command.consul.kv import kv_remove, kv_list
+from armada_backend.hooks import run_hook
 
 
 class Stop(api_base.ApiCommand):
@@ -33,6 +34,8 @@ class Stop(api_base.ApiCommand):
             except Exception as e:
                 get_logger().exception(e)
         else:
+            run_hook(container_id, 'pre-stop', 10)
+
             run_command_in_container('supervisorctl stop armada_agent', container_id)
 
             # TODO: Compatibility with old microservice images. Should be removed in future armada version.
