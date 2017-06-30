@@ -35,7 +35,7 @@ def parse_args():
     parser.add_argument('-V', '--version', action='version', version=__version__)
     parser.add_argument('-vv', '--verbose', action='store_true', help='Increase output verbosity.')
 
-    subparsers = parser.add_subparsers(dest='subparser_command')
+    subparsers = parser.add_subparsers(dest='subparser_command', metavar='{name,join,promote,shutdown,dockyard,list,info,run,deploy,stop,restart,recover,ssh,build,push,create,version,diagnose}')
 
     parser_name_help = 'get/set name for this ship'
     parser_name = subparsers.add_parser('name', help=parser_name_help, description=parser_name_help)
@@ -125,7 +125,6 @@ def parse_args():
     parser_diagnose.set_defaults(func=command_diagnose.command_diagnose)
 
     parser_poker = subparsers.add_parser('poker')
-    command_poker.add_arguments(parser_poker)
     parser_poker.set_defaults(func=command_poker.command_poker)
 
     for subparser in subparsers.choices.values():

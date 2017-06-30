@@ -4,14 +4,9 @@ import wave
 
 from PIL import Image
 
-from armada_command import command_run
 from armada_command.utils import image_to_ansi
 
 CHUNK = 1024
-
-
-def add_arguments(parser):
-    command_run.add_arguments(parser)
 
 
 def command_poker(args):
