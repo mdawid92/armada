@@ -7,7 +7,7 @@ import subprocess
 import sys
 
 from armada_command.consul.consul import consul_query
-from consul import kv
+from armada_command.consul import kv
 
 
 class ArmadaCommandException(Exception):

@@ -164,6 +164,7 @@ case "$1" in
             -p ${ARMADA_PORT}:80 \
             -p 8300:8300 -p 8301:8301 -p 8301:8301/udp \
             -p 8400:8400 -p 8500:8500 \
+            -p 8000:8000 \
             -v /opt/armada:/opt/armada \
             -v /etc/opt:/etc/opt \
             -v /opt/armada-docker-client/docker-$docker_version:/usr/bin/docker \
